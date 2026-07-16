@@ -31,6 +31,8 @@
 
 #include "lwip/err.h"
 #include "lwip/tcp.h"
+#include "xtmrctr.h"
+#include "xparameters.h"
 #if defined (__arm__) || defined (__aarch64__)
 #include "xil_printf.h"
 #endif
@@ -66,11 +68,11 @@ err_t recv_callback(void *arg, struct tcp_pcb *tpcb,
 	/* in this case, we assume that the payload is < TCP_SND_BUF */
 
 	if (tcp_sndbuf(tpcb) > p->len) {
-/*		// changes data + 1
+		// changes data + 1
 		for (int i = 0; i < p->len; i++) {
 		    ((char *)p->payload)[i]++;
 		}
-*/
+
 		err = tcp_write(tpcb, p->payload, p->len, 1);
 	} else
 		xil_printf("no space in tcp_sndbuf\n\r");
@@ -105,6 +107,14 @@ int start_application()
 	err_t err;
 	unsigned port = 7;
 
+	XTmrCtr TimerCounter;
+
+	u32 timer_id = 0;
+	XTmrCtr_Initialize(&TimerCounter, XPAR_AXI_TIMER_0_DEVICE_ID);
+	XTmrCtr_SetOptions(&TimerCounter,timer_id, XTC_AUTO_RELOAD_OPTION);
+	XTmrCtr_Start(&TimerCounter,timer_id);
+	u32 time[6];
+
 	/* create new TCP PCB structure */
 	pcb = tcp_new_ip_type(IPADDR_TYPE_ANY);
 	if (!pcb) {
@@ -131,8 +141,10 @@ int start_application()
 
 	/* specify callback to use for incoming connections */
 	tcp_accept(pcb, accept_callback);
+	time[0] = (*(volatile u32 *)(XPAR_AXI_TIMER_0_BASEADDR + 0x08));
 
 	xil_printf("TCP echo server started @ port %d\n\r", port);
-
+	time[1] = (*(volatile u32 *)(XPAR_AXI_TIMER_0_BASEADDR + 0x08));
+	xil_printf("%d nsec \r\n",(time[1] - time[0])*10);
 	return 0;
 }

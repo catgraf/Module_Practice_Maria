@@ -31,7 +31,16 @@ src/echo.o src/echo.o: ../src/echo.c \
  ../../echo_server_bsp/microblaze_0/include/lwip/ip6.h \
  ../../echo_server_bsp/microblaze_0/include/lwip/prot/ip.h \
  ../../echo_server_bsp/microblaze_0/include/lwip/icmp.h \
- ../../echo_server_bsp/microblaze_0/include/lwip/prot/icmp.h
+ ../../echo_server_bsp/microblaze_0/include/lwip/prot/icmp.h \
+ ../../echo_server_bsp/microblaze_0/include/xtmrctr.h \
+ ../../echo_server_bsp/microblaze_0/include/xstatus.h \
+ ../../echo_server_bsp/microblaze_0/include/xtmrctr_l.h \
+ ../../echo_server_bsp/microblaze_0/include/xil_io.h \
+ ../../echo_server_bsp/microblaze_0/include/xil_printf.h \
+ ../../echo_server_bsp/microblaze_0/include/xparameters.h \
+ ../../echo_server_bsp/microblaze_0/include/bspconfig.h \
+ ../../echo_server_bsp/microblaze_0/include/mb_interface.h \
+ ../../echo_server_bsp/microblaze_0/include/xparameters.h
 
 ../../echo_server_bsp/microblaze_0/include/lwip/err.h:
 
@@ -98,3 +107,21 @@ src/echo.o src/echo.o: ../src/echo.c \
 ../../echo_server_bsp/microblaze_0/include/lwip/icmp.h:
 
 ../../echo_server_bsp/microblaze_0/include/lwip/prot/icmp.h:
+
+../../echo_server_bsp/microblaze_0/include/xtmrctr.h:
+
+../../echo_server_bsp/microblaze_0/include/xstatus.h:
+
+../../echo_server_bsp/microblaze_0/include/xtmrctr_l.h:
+
+../../echo_server_bsp/microblaze_0/include/xil_io.h:
+
+../../echo_server_bsp/microblaze_0/include/xil_printf.h:
+
+../../echo_server_bsp/microblaze_0/include/xparameters.h:
+
+../../echo_server_bsp/microblaze_0/include/bspconfig.h:
+
+../../echo_server_bsp/microblaze_0/include/mb_interface.h:
+
+../../echo_server_bsp/microblaze_0/include/xparameters.h:

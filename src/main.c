@@ -252,12 +252,6 @@ int main()
 	/* start the application (web server, rxtest, txtest, etc..) */
 	start_application();
 
-	//testing working timer
-	//u32 t0 = XTmrCtr_GetValue(&Timer, 0);
-	//for (volatile int i = 0; i < 100000; i++);
-	//u32 t1 = XTmrCtr_GetValue(&Timer, 0);
-	//xil_printf("Timer test: %u\r\n", t1 - t0);
-
 
 	/* receive and process packets */
 	while (1) {
